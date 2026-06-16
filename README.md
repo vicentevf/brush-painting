@@ -8,10 +8,10 @@ static HTML page that shares the same content below the hero.
 
 | File | Concept | Look |
 |------|---------|------|
-| [`index.html`](index.html) | **01 · Bold & Bright** | Split hero, purple + yellow |
+| [`index.html`](index.html) | **Showcase** | Front door — live previews of all three concepts |
+| [`index-v1.html`](index-v1.html) | **01 · Bold & Bright** | Split hero, purple + yellow |
 | [`index-v2.html`](index-v2.html) | **02 · Slate & Stone** | Dark stone texture, purple |
 | [`index-v3.html`](index-v3.html) | **03 · Paint Reveal** | Interactive — paint colour onto the hero |
-| [`presentation.html`](presentation.html) | **Showcase** | Live previews of all three, for the client |
 
 ## View it
 
@@ -20,7 +20,7 @@ serve the folder over HTTP (browsers block local `file://` iframes):
 
 ```bash
 python -m http.server 8000
-# then open http://localhost:8000/presentation.html
+# then open http://localhost:8000/
 ```
 
 On **GitHub Pages** everything works over https with no extra steps.
