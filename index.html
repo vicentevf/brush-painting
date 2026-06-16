@@ -70,6 +70,27 @@
     transition:transform .25s var(--ease),background .25s}
   .open:hover{background:var(--purple-soft);transform:translateY(-2px)}
 
+  /* explainer sections */
+  .block{padding:36px 0 12px}
+  .block-head{text-align:center;max-width:62ch;margin:0 auto 44px}
+  .block-head h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin:14px 0 14px}
+  .block-head p{color:var(--grey);font-size:1.08rem}
+  .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:880px){.benefits{grid-template-columns:1fr;max-width:560px;margin:0 auto}}
+  .benefit{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:30px 28px;
+    transition:transform .35s var(--ease),border-color .35s}
+  .benefit:hover{transform:translateY(-5px);border-color:var(--purple-soft)}
+  .benefit .bi{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+    background:var(--purple);color:var(--yellow);font-size:1.3rem;font-weight:700}
+  .benefit h3{font-size:1.18rem;font-weight:700;margin-bottom:8px}
+  .benefit p{color:var(--grey);font-size:.95rem}
+  .incl{max-width:900px;margin:0 auto;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 34px}
+  @media(max-width:680px){.incl{grid-template-columns:1fr}}
+  .incl li{list-style:none;display:flex;gap:14px;align-items:flex-start;color:#d9d8de;font-size:1rem;padding:6px 0}
+  .incl li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--yellow);
+    color:var(--ink);font-weight:800;font-size:.8rem;display:grid;place-items:center;margin-top:2px}
+  .incl li b{color:#fff;font-weight:600}
+
   /* note + footer */
   .note{text-align:center;color:var(--grey);font-size:.96rem;max-width:70ch;margin:10px auto 0;
     padding:22px 26px;border:1px dashed var(--line);border-radius:16px}
@@ -89,7 +110,27 @@
   </div>
 </header>
 
+<section class="wrap block">
+  <div class="block-head">
+    <span class="eyebrow">Why a website</span>
+    <h2>Instagram is great. A website makes it real<span class="dot">.</span></h2>
+    <p>Right now Brush lives on Instagram — perfect for inspiration, but it's borrowed ground. A site of your own does the things a feed simply can't:</p>
+  </div>
+  <div class="benefits">
+    <div class="benefit"><div class="bi">⌕</div><h3>Get found on Google</h3><p>When a local searches "painters in Mount Maunganui," a website shows up — your Instagram won't. This is where new clients actually look.</p></div>
+    <div class="benefit"><div class="bi">★</div><h3>Look established &amp; premium</h3><p>Homeowners investing in their home want reassurance. A polished site signals a serious, trustworthy business worth the spend.</p></div>
+    <div class="benefit"><div class="bi">▤</div><h3>Show your work properly</h3><p>A curated gallery tells the story your way — no endless scrolling, no algorithm deciding what people see first.</p></div>
+    <div class="benefit"><div class="bi">✎</div><h3>Turn visitors into quotes</h3><p>One clear tap to WhatsApp or call — far less friction than digging through DMs. More enquiries, less back-and-forth.</p></div>
+    <div class="benefit"><div class="bi">◷</div><h3>Always working for you</h3><p>It promotes your work 24/7 — while you're up a ladder, away for the weekend, or fast asleep.</p></div>
+    <div class="benefit"><div class="bi">⚑</div><h3>Own your space</h3><p>You control it, not the platform. A permanent home for your brand that no algorithm change can take away.</p></div>
+  </div>
+</section>
+
 <section class="wrap">
+  <div class="block-head" style="margin-bottom:8px">
+    <span class="eyebrow">The concepts</span>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-top:14px">Pick the personality<span class="dot">.</span></h2>
+  </div>
   <div class="concepts">
 
     <!-- Concept 1 -->
@@ -159,6 +200,24 @@
   </div>
 
   <p class="note"><b>How to use this page:</b> open each concept in a new tab to explore the full home page, the work carousel, services, the team and contact. The three concepts are identical below the hero — we'll lock the look you like best, then drop in your real project photos.</p>
+</section>
+
+<section class="wrap block">
+  <div class="block-head">
+    <span class="eyebrow">What you get</span>
+    <h2>Every version includes<span class="dot">.</span></h2>
+    <p>Whichever look you choose, the site comes fully built and ready to grow with the business:</p>
+  </div>
+  <ul class="incl">
+    <li><span><b>Mobile-first design</b> — looks sharp on phones, where most clients browse.</span></li>
+    <li><span><b>Work photo carousel</b> — black &amp; white that bursts into colour on hover.</span></li>
+    <li><span><b>Services overview</b> — exterior, interior, new builds, repaints &amp; more.</span></li>
+    <li><span><b>Meet the team</b> — Arthur &amp; Lucas, putting faces to the brand.</span></li>
+    <li><span><b>One-tap quote</b> — WhatsApp, call and Instagram, front and centre.</span></li>
+    <li><span><b>Built on your brand</b> — your real logo, colours and voice throughout.</span></li>
+    <li><span><b>Fast &amp; lightweight</b> — loads instantly, no bloat or clutter.</span></li>
+    <li><span><b>Free hosting &amp; easy updates</b> — add new project photos any time.</span></li>
+  </ul>
 </section>
 
 <footer>
