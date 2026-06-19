@@ -13,18 +13,18 @@
 
 <style>
   :root{
-    --ink:#17171B;          /* slate stone base                  */
-    --ink-2:#212128;        /* raised slate surface              */
-    --paper:#ECEAE6;        /* warm plaster (light sections)     */
-    --paper-2:#DCD9D2;      /* light surface                     */
-    --purple:#7C63B8;       /* logo purple                       */
-    --purple-deep:#52407E;  /* deeper purple                     */
-    --purple-soft:#A78FD6;  /* lighter violet glow               */
-    --yellow:#B49BE6;       /* ACCENT — lilac (was gold)         */
-    --yellow-soft:#C9B6F2;  /* lighter lilac                     */
-    --grey:#9F9DA8;         /* muted text on dark                */
-    --grey-d:#56545E;       /* muted text on light               */
-    --line:rgba(255,255,255,.10);
+    --ink:#0B0B0D;          /* near-black                        */
+    --ink-2:#121217;        /* raised black surface              */
+    --paper:#F6F5F8;        /* warm white                        */
+    --paper-2:#ECEAF1;      /* light surface                     */
+    --purple:#6C5CB8;       /* logo purple (background)          */
+    --purple-deep:#5847A6;  /* deeper purple                     */
+    --purple-soft:#897BD0;  /* lighter violet glow               */
+    --yellow:#FACA28;       /* logo yellow (lettering)           */
+    --yellow-soft:#FFD95A;  /* lighter gold                      */
+    --grey:#A8A6AE;         /* muted text on dark                */
+    --grey-d:#5C5A63;       /* muted text on light               */
+    --line:rgba(255,255,255,.12);
     --maxw:1200px;
     --ease:cubic-bezier(.22,.61,.36,1);
   }
@@ -33,19 +33,8 @@
   html{scroll-behavior:smooth}
   body{
     font-family:'Inter',system-ui,sans-serif;
-    color:var(--paper);line-height:1.6;
+    background:var(--ink);color:var(--paper);line-height:1.6;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
-    /* slate stone — one continuous texture covering the viewport */
-    background-color:#17171B;
-    background-image:
-      radial-gradient(circle at 22% 18%,rgba(124,99,184,.10),transparent 55%),
-      radial-gradient(circle at 82% 82%,rgba(58,45,96,.18),transparent 55%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.009' numOctaves='5' seed='8'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
-    background-size:auto,auto,cover;
-    background-repeat:no-repeat,no-repeat,no-repeat;
-    background-position:center,center,center;
-    background-blend-mode:normal,normal,soft-light;
-    background-attachment:fixed,fixed,fixed;
   }
   h1,h2,h3,.brand{font-family:'Poppins',sans-serif;letter-spacing:-.02em;line-height:1.05}
   a{color:inherit;text-decoration:none}
@@ -72,7 +61,7 @@
     padding:22px 28px;transition:background .4s var(--ease),padding .4s var(--ease),backdrop-filter .4s,border-color .4s;
     border-bottom:1px solid transparent;
   }
-  header.nav.scrolled{background:rgba(23,23,27,.85);backdrop-filter:blur(14px);padding:14px 28px;border-bottom:1px solid var(--line)}
+  header.nav.scrolled{background:rgba(11,11,13,.82);backdrop-filter:blur(14px);padding:14px 28px;border-bottom:1px solid var(--line)}
   .nav .brand{font-weight:800;font-size:1.35rem;color:#fff}
   .nav nav{display:flex;gap:34px;align-items:center}
   .nav nav a{font-size:.92rem;font-weight:500;color:rgba(255,255,255,.78);transition:color .25s}
@@ -84,26 +73,33 @@
   .nav .cta-btn:hover{background:var(--yellow-soft);transform:translateY(-2px)}
   .menu-toggle{display:none;background:none;border:0;color:#fff;cursor:pointer;font-size:1.4rem}
 
-  /* ---------- HERO (the logo) ---------- */
-  .hero{
-    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-    padding:140px 0 70px;position:relative;overflow:hidden;background:transparent;
-  }
-  .hero::before{ /* soft purple light over the stone */
-    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(circle at 30% 38%,rgba(124,99,184,.32),transparent 58%);
-  }
+  /* ---------- HERO (interactive paint reveal) ---------- */
+  .hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;
+    padding:140px 0 70px;background:#16161a;cursor:crosshair}
+  .paint-color{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(circle at 18% 28%, #8B6BC9 0%, transparent 42%),
+      radial-gradient(circle at 78% 22%, #FACA28 0%, transparent 38%),
+      radial-gradient(circle at 66% 78%, #6C5CB8 0%, transparent 46%),
+      radial-gradient(circle at 28% 82%, #B49BE6 0%, transparent 42%),
+      radial-gradient(circle at 50% 50%, #5847A6 0%, transparent 62%),
+      #2a2444;}
+  .paint-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%}
   .hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 28px;width:100%}
-  .hero .eyebrow{margin-bottom:30px;color:var(--yellow);opacity:0;animation:rise .9s var(--ease) .1s forwards}
+  .hero-content{max-width:600px}
+  .hero .eyebrow{margin-bottom:24px;color:var(--yellow);opacity:0;animation:rise .9s var(--ease) .1s forwards}
   .hero .eyebrow::before{background:var(--yellow)}
-
-  .hero-logo{
-    display:block;width:min(720px,92%);height:auto;
-    opacity:0;animation:rise 1s var(--ease) .2s forwards;
-  }
+  .hero-logo{display:block;width:min(560px,92%);height:auto;
+    filter:drop-shadow(0 8px 28px rgba(0,0,0,.5));
+    opacity:0;animation:rise 1s var(--ease) .2s forwards;}
+  .paint-hint{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:3;
+    font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72);
+    font-weight:600;display:flex;align-items:center;gap:.6em;transition:opacity .6s;pointer-events:none}
+  .paint-hint.hide{opacity:0}
+  .paint-hint::before{content:"";width:26px;height:1px;background:rgba(255,255,255,.55)}
 
   .hero-row{
-    display:flex;flex-wrap:wrap;align-items:center;gap:30px;justify-content:space-between;margin-top:64px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:26px;margin-top:40px;
     opacity:0;animation:rise 1s var(--ease) .5s forwards;
   }
   .hero-lead{max-width:480px;font-size:1.15rem;color:rgba(255,255,255,.82)}
@@ -203,12 +199,11 @@
 
   /* ---------- CONTACT (purple brand block) ---------- */
   .contact{
-    text-align:center;position:relative;overflow:hidden;background:transparent;
-  }
-  .contact::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    text-align:center;position:relative;overflow:hidden;
     background:
-      radial-gradient(circle at 20% 15%,rgba(124,99,184,.4),transparent 52%),
-      radial-gradient(circle at 85% 88%,rgba(82,64,126,.5),transparent 52%);
+      radial-gradient(circle at 18% 12%,rgba(137,123,208,.55),transparent 50%),
+      radial-gradient(circle at 88% 92%,rgba(88,71,166,.6),transparent 50%),
+      var(--purple);
   }
   .contact .eyebrow{color:var(--yellow)}
   .contact .eyebrow::before{background:var(--yellow)}
@@ -223,7 +218,7 @@
   .contact-meta a:hover .v{color:var(--yellow)}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:46px 28px;border-top:1px solid var(--line);background:transparent}
+  footer{padding:46px 28px;border-top:1px solid var(--line);background:var(--ink)}
   .foot-in{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
   footer .brand{display:inline-flex;align-items:center;gap:.5em}
   footer .brand .word{font-family:'Poppins';font-weight:800;font-size:1.3rem;color:#009C3B}
@@ -270,19 +265,23 @@
 </header>
 
 <!-- ===================== HERO (logo) ===================== -->
-<section id="top" class="hero grain">
+<section id="top" class="hero">
+  <div class="paint-color"></div>
+  <canvas class="paint-canvas" id="paintCanvas"></canvas>
   <div class="hero-inner">
-    <span class="eyebrow">Mount Maunganui · Bay of Plenty</span>
-    <img class="hero-logo" src="images/logo-purple.png" alt="brush. painting.co — house painting, Mount Maunganui" />
-
-    <div class="hero-row">
-      <p class="hero-lead"><strong>Painting for architectural homes.</strong> A crisp, considered finish for the homes that deserve it — inside and out.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Get a quote →</a>
-        <a href="#work" class="btn btn-ghost">See our work</a>
+    <div class="hero-content">
+      <span class="eyebrow">Mount Maunganui · Bay of Plenty</span>
+      <img class="hero-logo" src="../images/logo.png" alt="brush. painting.co — house painting, Mount Maunganui" />
+      <div class="hero-row">
+        <p class="hero-lead"><strong>Painting for architectural homes.</strong> A crisp, considered finish for the homes that deserve it — inside and out.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get a quote →</a>
+          <a href="#work" class="btn btn-ghost">See our work</a>
+        </div>
       </div>
     </div>
   </div>
+  <div class="paint-hint" id="paintHint">Move to paint</div>
 </section>
 
 <!-- ===================== INTRO (white) ===================== -->
@@ -311,15 +310,15 @@
   <div class="carousel reveal">
     <button class="car-btn car-prev" id="carPrev" aria-label="Previous">‹</button>
     <div class="track" id="track">
-      <div class="slide"><img src="images/work-1.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-2.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-3.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-4.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide color"><img src="images/work-5.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-6.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-7.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-8.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
-      <div class="slide"><img src="images/work-9.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-1.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-2.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-3.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-4.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide color"><img src="../images/work-5.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-6.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-7.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-8.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
+      <div class="slide"><img src="../images/work-9.jpg" alt="Brush Painting Co. project" loading="lazy"></div>
     </div>
     <button class="car-btn car-next" id="carNext" aria-label="Next">›</button>
   </div>
@@ -358,11 +357,11 @@
       </div>
       <div class="owners">
         <figure class="owner">
-          <img src="images/owner-1.jpg" alt="Arthur — owner, Brush Painting Co.">
+          <img src="../images/owner-1.jpg" alt="Arthur — owner, Brush Painting Co.">
           <figcaption class="caption"><span class="nm">Arthur</span><span class="role">Owner</span></figcaption>
         </figure>
         <figure class="owner">
-          <img src="images/owner-2.jpg" alt="Lucas — owner, Brush Painting Co.">
+          <img src="../images/owner-2.jpg" alt="Lucas — owner, Brush Painting Co.">
           <figcaption class="caption"><span class="nm">Lucas</span><span class="role">Owner</span></figcaption>
         </figure>
       </div>
@@ -440,6 +439,39 @@
     track.addEventListener('pointermove',e=>{if(!down)return;track.scrollLeft=startLeft-(e.pageX-startX);});
     const end=()=>{down=false;track.classList.remove('dragging');};
     track.addEventListener('pointerup',end);track.addEventListener('pointercancel',end);
+  })();
+
+  // interactive paint-reveal hero
+  (function(){
+    const hero=document.getElementById('top');
+    const cv=document.getElementById('paintCanvas');
+    const hint=document.getElementById('paintHint');
+    if(!hero||!cv) return;
+    const ctx=cv.getContext('2d');
+    function fill(){
+      cv.width=hero.offsetWidth;cv.height=hero.offsetHeight;
+      ctx.globalCompositeOperation='source-over';
+      const g=ctx.createLinearGradient(0,0,cv.width,cv.height);
+      g.addColorStop(0,'#15151a');g.addColorStop(1,'#24242c');
+      ctx.fillStyle=g;ctx.fillRect(0,0,cv.width,cv.height);
+    }
+    fill();window.addEventListener('resize',fill);
+    function brush(x,y){
+      ctx.globalCompositeOperation='destination-out';
+      const r=84,grd=ctx.createRadialGradient(x,y,0,x,y,r);
+      grd.addColorStop(0,'rgba(0,0,0,.92)');grd.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grd;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+    }
+    let painted=false;
+    hero.addEventListener('pointermove',e=>{
+      const rect=hero.getBoundingClientRect();
+      brush(e.clientX-rect.left,e.clientY-rect.top);
+      if(!painted){painted=true;hint&&hint.classList.add('hide');}
+    });
+    // slow "dry" — paint fades back so it stays interactive
+    setInterval(()=>{ctx.globalCompositeOperation='source-over';ctx.fillStyle='rgba(21,21,27,.04)';ctx.fillRect(0,0,cv.width,cv.height);},110);
+    // intro auto-stroke so the effect is visible on load
+    let t=0;const demo=setInterval(()=>{t++;const x=cv.width*(.18+.64*(t/42)),y=cv.height*(.52+Math.sin(t/5)*.13);brush(x,y);if(t>=42)clearInterval(demo);},26);
   })();
 </script>
 </body>

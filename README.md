@@ -1,32 +1,31 @@
-# Brush Painting Co. — Website Concepts
+# Brush Painting Co. — Website
 
-Three home-page concept directions for **Brush Painting Co.**, a painting studio for
-architectural homes in Mount Maunganui, Bay of Plenty (NZ). Each is a self-contained
-static HTML page that shares the same content below the hero.
+Website for **Brush Painting Co.**, a painting studio for architectural homes in
+Mount Maunganui, Bay of Plenty (NZ). Self-contained static HTML.
 
-## Concepts
+The client chose the **Slate & Stone** direction — it's now the live site at
+[`index.html`](index.html). The earlier concepts and the (Portuguese) pitch page
+are kept in [`archive/`](archive/) for reference.
 
-| File | Concept | Look |
-|------|---------|------|
-| [`index.html`](index.html) | **Showcase** | Front door — live previews of all three concepts |
-| [`index-v1.html`](index-v1.html) | **01 · Bold & Bright** | Split hero, purple + yellow |
-| [`index-v2.html`](index-v2.html) | **02 · Slate & Stone** | Dark stone texture, purple |
-| [`index-v3.html`](index-v3.html) | **03 · Paint Reveal** | Interactive — paint colour onto the hero |
+## Live site
+- **Home:** `index.html` — Slate & Stone (dark stone texture + purple)
+- Hosted on GitHub Pages → https://vicentevf.github.io/brush-painting/
 
-## View it
+## Archive (not the live site)
+- `archive/index-v1.html` — Concept 01 · Bold & Bright (purple + yellow split hero)
+- `archive/index-v3.html` — Concept 03 · Paint Reveal (interactive)
+- `archive/showcase.html` — client pitch page (Portuguese), live previews of all concepts
 
-Open any HTML file in a browser. To make the `presentation.html` live previews work,
-serve the folder over HTTP (browsers block local `file://` iframes):
+## View locally
+Open `index.html` in a browser, or serve the folder (needed for the showcase iframes):
 
 ```bash
 python -m http.server 8000
 # then open http://localhost:8000/
 ```
 
-On **GitHub Pages** everything works over https with no extra steps.
-
-## Assets
-- `images/logo.png` — yellow brush. logo (transparent)
-- `images/logo-purple.png` — purple variant (used by Concept 02)
-- `images/owner-1.jpg`, `owner-2.jpg` — Arthur & Lucas
-- `images/work-1..9.jpg` — project photos (carousel)
+## Assets (`images/`)
+- `logo.png` — yellow brush. logo (transparent)
+- `logo-purple.png` — purple variant (used by the live Slate & Stone site)
+- `owner-1.jpg`, `owner-2.jpg` — Arthur & Lucas
+- `work-1..9.jpg` — project photos (carousel)
