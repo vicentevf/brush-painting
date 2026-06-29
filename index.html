@@ -136,7 +136,8 @@
     border-bottom:1px solid transparent;
   }
   header.nav.scrolled{background:rgba(23,23,27,.85);backdrop-filter:blur(14px);padding:14px 28px;border-bottom:1px solid var(--line)}
-  .nav .brand{font-weight:800;font-size:1.35rem;color:#fff}
+  .nav .brand{font-weight:800;font-size:1.35rem;color:#fff;display:flex;align-items:center}
+  .nav .brand img{height:30px;width:auto;display:block}
   .nav nav{display:flex;gap:34px;align-items:center}
   .nav nav a{font-size:.92rem;font-weight:500;color:rgba(255,255,255,.78);transition:color .25s}
   .nav nav a:hover{color:#fff}
@@ -323,7 +324,7 @@
   footer{padding:46px 28px;border-top:1px solid var(--line);background:transparent}
   .foot-in{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
   footer .brand{display:inline-flex;align-items:center;gap:.5em}
-  footer .brand .word{font-family:'Poppins';font-weight:800;font-size:1.3rem;color:#009C3B}
+  footer .brand .word-img{height:26px;width:auto;display:block}
   footer .brand .dot{color:var(--yellow)}
   footer .brand .flag{height:16px;width:auto;display:block;border-radius:2px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   footer small{color:var(--grey-d)}
@@ -355,7 +356,7 @@
 
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
-  <a href="#top" class="brand">brush<span class="dot">.</span></a>
+  <a href="#top" class="brand"><img src="images/logo-white.png" alt="brush. painting.co" /></a>
   <nav>
     <a href="#work">Work</a>
     <a href="#services">Services</a>
@@ -560,7 +561,7 @@
 <footer>
   <div class="foot-in">
     <div class="brand">
-      <span class="word">brush<span class="dot">.</span></span>
+      <img class="word-img" src="images/logo-green.png" alt="brush. painting.co" />
       <svg class="flag" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brazilian flag">
         <rect width="20" height="14" rx="1.4" fill="#009C3B"/>
         <path d="M10 1.9 L18.1 7 L10 12.1 L1.9 7 Z" fill="#FFDF00"/>
