@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /archive/
+
+Sitemap: https://vicentevf.github.io/brush-painting/sitemap.xml
